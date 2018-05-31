@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include 'config.php';
 require("get_faucets.php");
@@ -16,31 +16,31 @@ if (isset($_POST['username']) and isset($_POST['password']) and !isset($_SESSION
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$_SESSION['secr'] = get_token(100); 
-	
+	$_SESSION['secr'] = get_token(100);
+
 
 	if (md5($username . $password . $_SESSION['secr']) == md5($admin_username . $admin_password . $_SESSION['secr'])) {
 		$_SESSION['data'] = md5($username . $password . $_SESSION['secr']);
-		
+
 	} else {
 		$alert = 'Invalid Login';
-		
-		$_SESSION['secr'] = get_token(100); 
+
+		$_SESSION['secr'] = get_token(100);
 	}
 }
 if (isset($_SESSION['data'])) {
 	if ($_SESSION['data'] == md5($admin_username . $admin_password . $_SESSION['secr'])) {
 		$logged = true;
-		
+
 	} else {
-		$_SESSION['secr'] = get_token(100); 
+		$_SESSION['secr'] = get_token(100);
 	}
 }
 
 if (isset($_POST['faucet_name'])) {
 	$table = getTable($currency);
-	$faucet_name =  $_POST['faucet_name'];
-	$owner_name = $_POST['owner_name'];
+	$faucet_name =  str_replace("'", "\'", $_POST['faucet_name']);
+	$owner_name = str_replace("'", "\'", $_POST['owner_name']);
 	$faucet_timer = $_POST['faucet_timer'];
 	if ($_POST['directPayout'] == "on"){
 		$direct_payout = 1;
@@ -48,37 +48,38 @@ if (isset($_POST['faucet_name'])) {
 	if ($_POST['frames'] = "on"){
 		$frames = 1;
 	}else {$frames = 0;}
-	
+
 	if($_POST['popups'] == "on"){
 		$popups = 1;
 	}else{$popups = 0;}
 	if($_POST['shortlink'] == "on"){
 		$shortlinks = 1;
 	}else{$shortlinks = 0;}
-	
+
 	if($_POST['admin_empty'] == "on"){
 		$disabled = 1;
 	}else {$disabled = 0;}
-	
+
 	$last_verified = $_POST['faucet_verified_date'];
 	$captcha_type = $_POST['captcha_type'];
 	$admin_link = $_POST['admin_link'];
 	$ref_link = $_POST['ref_link'];
-	
-	
+
+
 	$query = "INSERT INTO `".$table."` (faucet_name, owner_name, faucet_timer, direct_payout, admin_link,
 			ref_link, frames, pop_ups, shortlink_req, empty_disabled, captcha_type, last_verified_date)
 			VALUES('".$faucet_name."', '".$owner_name."', '".$faucet_timer."', ".$direct_payout.", '"
-					.$admin_link."', '".$ref_link."', ".$frames.", ".$popups.", ".$shortlinks.", ".$disabled.", 
+					.$admin_link."', '".$ref_link."', ".$frames.", ".$popups.", ".$shortlinks.", ".$disabled.",
 					'".$captcha_type."', '".$last_verified."')";
 
-	
-	if  ($mysqli->query($query) === TRUE) {
-		echo "Record added successfully";
-	} else {
-		echo "Error updating record: " . $mysqli->error;
-	}
-	
+
+
+					if  ($mysqli->query($query) === TRUE) {
+						echo "Record added successfully";
+					} else {
+						echo "Error updating record: " . $mysqli->error;
+					}
+
 }
 
 ?>
@@ -91,7 +92,7 @@ if (isset($_POST['faucet_name'])) {
 	<title>Admin Area</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link rel="stylesheet" href="template/css/countdown.css"> 
+	
 </head>
 <body>
 	<div class="container">
