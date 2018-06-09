@@ -131,7 +131,10 @@
 				</div>
 				
 					<input type="button" class="btn btn-success" value="UPDATE" name="submit" id="update" onclick="updateMe()"/>				    
-					<input type="button" class="btn btn-danger" value="DELETE" name="delete" id="delete" onclick="deleteMe()"/>
+					<!-- <input type="button" class="btn btn-danger" value="DELETE" name="delete" id="delete" onclick="deleteMe()"/> -->
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+	  						DELETE
+					</button>
 					<input type="button" class="btn btn-warning" value="Logout" name="logout" id="logout" onclick="logMeOut()"/>
 					
 				
@@ -161,6 +164,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-success" id="updateFilters">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filterModalLabel">Faucet Filter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure you wish to delete this faucet?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <input type="button" class="btn btn-danger" value="DELETE" name="delete" id="delete" onclick="deleteMe()" data-dismiss="modal"/>
       </div>
     </div>
   </div>

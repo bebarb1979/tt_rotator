@@ -30,7 +30,9 @@ $faucet_count = 0;
 
 if (isset ($_POST['link'])){
 	$linkToSearch = $_POST['link'];
-	$faucet_name =  $_POST['faucet_name'];
+	//$faucet_name =  $_POST['faucet_name'];
+	$faucet_name =  str_replace("'", "\'", $_POST['faucet_name']);
+	
 	$faucet_timer = $_POST['faucet_timer'];
 	$direct_payout = $_POST['direct_payout'];
 	$frames = $_POST['frames'];
@@ -44,6 +46,7 @@ if (isset ($_POST['link'])){
 	$table = getTable($currency);
 	$query = "UPDATE `".$table."` SET 
 	`faucet_name`='".$faucet_name."',
+	`owner_name`='".$owner_name."',
 	`faucet_timer` ='".$faucet_timer."', 
 	`direct_payout` =".$direct_payout.",
 	`admin_link` ='".$admin_link."',
