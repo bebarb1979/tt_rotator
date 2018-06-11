@@ -37,6 +37,10 @@ Open and edit the config.php file. Most of the stuff in here should be self expl
 It's really that simple. Visit yoursite.com/rotator/admin.php and login using the credentials you saved in the config.php file. From here, you can add sites right away. Once you go back to the index file in your browswer, if you're logged in as admin, you'll be able to edit the links and other details as you browse. 
 
 ### Support
-If you have issues with this script, please contact info@ebarbsoftwareandwebdev.com and use Rotator Script in the subject. 
+If you have issues with this script, please contact info@ebarbsoftwareandwebdev.com and use Rotator Script in the subject.
+
+### Donations
+If you enjoy this script, feel free to show your support via BTC donations. Send any amount to: 1Meen2ykKRHPSoi5qLK3oK7RcNhy5UFENA
+All donations are most appreciated!
 
 
